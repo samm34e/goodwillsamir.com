@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Website</title>
+  <style>
+    /* Basic Reset */
+    body, h1, p, ol, li, form, input, img {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Overall Body Styling */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #fff;
+      background-color: #007BFF; /* Blue background */
+    }
+
+    /* Header Styling */
+    header {
+      background: #0056b3; /* Darker blue for header */
+      color: #fff;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Main Content Styling */
+    main {
+      padding: 80px 20px 20px; /* Add padding to avoid overlap with fixed header */
+      text-align: center;
+    }
+
+    main h1, main p {
+      color: #fff;
+    }
+
+    /* Footer Styling */
+    footer {
+      background: #0056b3; /* Darker blue for footer */
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Forms Styling */
+    .form-container {
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #0056b3; /* Darker blue for form background */
+      border-radius: 5px;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .form-container input[type="submit"] {
+      background-color: #004494; /* Even darker blue for button */
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Hide sections initially */
+    .hidden {
+      display: none;
+    }
+
+    /* Button Styling */
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      color: #fff;
+      background-color: #004494; /* Blue for button */
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background-color: #003366; /* Darker blue on hover */
+    }
+
+    /* Align buttons in the header */
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .nav-buttons .button {
+      margin: 0;
+    }
+
+    /* List Styling */
+    ol {
+      text-align: left;
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+    /* Image Styling */
+    .image {
+      width: 300px;
+      height: auto;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-buttons">
+        <a href="#" onclick="showSection('home')" class="button hidden" id="home-button">Home</a>
+        <a href="#" onclick="showSection('about')" class="button hidden" id="about-button">About</a>
+        <a href="#" onclick="showSection('signin')" class="button" id="signin-button">Sign In</a>
+        <a href="#" onclick="showSection('login')" class="button hidden" id="login-button">Login</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- Home Page Content -->
+    <div id="home" class="hidden">
+      <h1>Welcome to My Website</h1>
+      <p>This is the home page.</p>
+      <a href="#" onclick="showSection('temples')" class="button hidden" id="temples-button">List of Temples</a>
+      <a href="#" onclick="showSection('mountains')" class="button hidden" id="mountains-button">List of Mountains</a>
+      <a href="#" onclick="showSection('animals')" class="button hidden" id="animals-button">List of Animals</a>
+      <a href="#" onclick="showSection('birds')" class="button hidden" id="birds-button">List of Birds</a>
+    </div>
+
+    <!-- About Page Content -->
+    <div id="about" class="hidden">
+      <h1>About This Website</h1>
+      <p>This is a simple website created by Samir Pandey. It provides information about different aspects of Nepal, including temples, mountains, animals, and birds, to offer insights into the cultural and natural beauty of the country.</p>
+    </div>
+
+    <!-- Sign In Form -->
+    <div id="signin" class="form-container">
+      <h1>Sign In</h1>
+      <form id="signin-form">
+        <input type="email" id="signin-email" placeholder="Email" required>
+        <input type="password" id="signin-password" placeholder="Password" required>
+        <input type="submit" value="Sign In">
+      </form>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login" class="form-container hidden">
+      <h1>Login</h1>
+      <form id="login-form">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <input type="submit" value="Login">
+      </form>
+    </div>
+
+    <!-- Content Sections -->
+    <div id="temples" class="hidden">
+      <h1>List of Temples in Nepal</h1>
+      <ol>
+        <li>Swayambhunath (Monkey Temple)<br>
+          <a href="https://www.google.com/search?q=Swayambhunath" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Swayambhunath_Stupa%2C_Kathmandu%2C_Nepal.jpg" alt="Swayambhunath" class="image">
+          </a>
+        </li>
+        <li>Pashupatinath Temple<br>
+          <a href="https://www.google.com/search?q=Pashupatinath+Temple" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Pashupatinath_Temple.JPG" alt="Pashupatinath Temple" class="image">
+          </a>
+        </li>
+        <li>Bhaktapur Durbar Square<br>
+          <a href="https://www.google.com/search?q=Bhaktapur+Durbar+Square" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Bhaktapur_Durbar_Square%2C_Nepal.jpg" alt="Bhaktapur Durbar Square" class="image">
+          </a>
+        </li>
+        <li>Changu Narayan Temple<br>
+          <a href="https://www.google.com/search?q=Changu+Narayan+Temple" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Changu_Narayan_%28Feb_2018%29.jpg" alt="Changu Narayan Temple" class="image">
+          </a>
+        </li>
+      </ol>
+    </div>
+
+    <div id="mountains" class="hidden">
+      <h1>List of Mountains in Nepal</h1>
+      <ol>
+        <li>Everest<br>
+          <a href="https://www.google.com/search?q=Everest" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Everest_from_Tibet.jpg" alt="Everest" class="image">
+          </a>
+        </li>
+        <li>Kanchenjunga<br>
+          <a href="https://www.google.com/search?q=Kanchenjunga" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Kanchenjunga_02.jpg" alt="Kanchenjunga" class="image">
+          </a>
+        </li>
+        <li>Annapurna<br>
+          <a href="https://www.google.com/search?q=Annapurna" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Annapurna_from_Muktinath.JPG" alt="Annapurna" class="image">
+          </a>
+        </li>
+        <li>Lhotse<br>
+          <a href="https://www.google.com/search?q=Lhotse" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Lhotse_from_Everest.jpg" alt="Lhotse" class="image">
+          </a>
+        </li>
+      </ol>
+    </div>
+
+    <div id="animals" class="hidden">
+      <h1>List of Animals in Nepal</h1>
+      <ol>
+        <li>Bengal Tiger<br>
+          <a href="https://www.google.com/search?q=Bengal+Tiger" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Panthera_tigris_tigris.JPG" alt="Bengal Tiger" class="image">
+          </a>
+        </li>
+        <li>One-Horned Rhinoceros<br>
+          <a href="https://www.google.com/search?q=One-Horned+Rhinoceros" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Rhinoceros_unicornis%2C_Jungle%2C_Nepal.jpg" alt="One-Horned Rhinoceros" class="image">
+          </a>
+        </li>
+        <li>Snow Leopard<br>
+          <a href="https://www.google.com/search?q=Snow+Leopard" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Snow_leopard%2C_GHNP.jpg" alt="Snow Leopard" class="image">
+          </a>
+        </li>
+        <li>Red Panda<br>
+          <a href="https://www.google.com/search?q=Red+Panda" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Ailurus_fulgens_%28Red_Panda%29.jpg" alt="Red Panda" class="image">
+          </a>
+        </li>
+      </ol>
+    </div>
+
+    <div id="birds" class="hidden">
+      <h1>List of Birds in Nepal</h1>
+      <ol>
+        <li>Himalayan Monal<br>
+          <a href="https://www.google.com/search?q=Himalayan+Monal" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Himalayan_monal_%28Lophophorus_impejanus%29.jpg" alt="Himalayan Monal" class="image">
+          </a>
+        </li>
+        <li>Red-headed Trogon<br>
+          <a href="https://www.google.com/search?q=Red-headed+Trogon" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Red-headed_Trogon_%28Harpactes_redivivus%29.jpg" alt="Red-headed Trogon" class="image">
+          </a>
+        </li>
+        <li>Great Hornbill<br>
+          <a href="https://www.google.com/search?q=Great+Hornbill" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Great_Hornbill%2C_Nepal.jpg" alt="Great Hornbill" class="image">
+          </a>
+        </li>
+        <li>Bar-headed Goose<br>
+          <a href="https://www.google.com/search?q=Bar-headed+Goose" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Bar-headed_Goose_%28Anser_indicus%29.jpg" alt="Bar-headed Goose" class="image">
+          </a>
+        </li>
+      </ol>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 All rights and Reserved.</p>
+  </footer>
+
+  <script>
+    let signedIn = false;
+    let email = "";
+    let password = "";
+
+    document.getElementById('signin-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      email = document.getElementById('signin-email').value;
+      password = document.getElementById('signin-password').value;
+      signedIn = true;
+      showSection('login');
+      document.getElementById('signin-button').classList.add('hidden');
+      document.getElementById('login-button').classList.remove('hidden');
+    });
+
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const loginEmail = document.getElementById('login-email').value;
+      const loginPassword = document.getElementById('login-password').value;
+
+      if (signedIn && loginEmail === email && loginPassword === password) {
+        showSection('home');
+        document.getElementById('home-button').classList.remove('hidden');
+        document.getElementById('about-button').classList.remove('hidden');
+        document.getElementById('temples-button').classList.remove('hidden');
+        document.getElementById('mountains-button').classList.remove('hidden');
+        document.getElementById('animals-button').classList.remove('hidden');
+        document.getElementById('birds-button').classList.remove('hidden');
+        document.getElementById('login-button').classList.add('hidden');
+      } else {
+        alert('Login failed. Please make sure your email and password match.');
+      }
+    });
+
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('main > div');
+      sections.forEach(section => {
+        section.classList.add('hidden');
+      });
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+    // Initial section: sign in page
+    showSection('signin');
+  </script>
+</body>
+</html>
